@@ -1,33 +1,32 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import './sidebarItem.scss'
 
-const SideBarItem = (props) => {
+const SidebarItem = (props) => {
+  let { name, path, icon } = props;
 
-let {name, path, icon} = props;
-
-let activeStyle = {
+  let activeStyle = {
     textDecoration: "underline",
   };
 
-
-
-
   return (
-    <div>
-<NavLink
-      exact
-      to={path}
-      style={({ isActive }) =>
-      isActive ? activeStyle : undefined
-    }
-    >
+    <>
+      <li className="menu-item">
+        <NavLink
+        className="menu-item__link"
+          exact
+          to={path}
+          style={({ isActive }) => (isActive ? activeStyle : undefined)}
+        >
+         
+              {icon}
+             
+              <span>{name}</span>
+     
+        </NavLink>
+      </li>
+    </>
+  );
+};
 
-      {icon}
-      <span>{name}</span>
-    </NavLink>
-
-    </div>
-  )
-}
-
-export default SideBarItem
+export default SidebarItem;
