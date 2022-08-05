@@ -61,7 +61,7 @@ import ClassIcon from '@mui/icons-material/Class';
 
           subRoutes: [
             {
-              path: "/student/manage-student",
+              path: "/student/:",
               name: "Manage Student ",
               icon: <ManageAccountsIcon />,
             },
