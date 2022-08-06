@@ -1,20 +1,15 @@
-import Layout from "../../components/layout/Layout"
-import "./studentList.scss"
+import "./studentList.scss";
+import Datatable from "../../components/dataTable/Datatable";
+import Layout from "../../components/layout/Layout";
 
-
-const List = () => {
+const StudentList = () => {
   return (
     <Layout>
-
-    <div style={{zIndex: '3'}} className="list">
-   <p>StudentList</p>
-   <p>StudentList</p><p>StudentList</p><p>StudentList</p><p>StudentList</p><p>StudentList</p><p>StudentList</p><p>StudentList</p><p>StudentList</p>
-   <p>StudentList</p><p>StudentList</p><p>StudentList</p><p>StudentList</p><p>StudentList</p><p>StudentList</p><p>StudentList</p><p>StudentList</p>
-   <p>StudentList</p><p>StudentList</p><p>StudentList</p><p>StudentList</p><p>StudentList</p><p>StudentList</p><p>StudentList</p><p>StudentList</p>
-   <p>StudentList</p><p>StudentList</p><p>StudentList</p><p>StudentList</p><p>StudentList</p><p>StudentList</p><p>StudentList</p>
-    </div>
+      <div className="list">
+        <Datatable />
+      </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default List
+export default StudentList;

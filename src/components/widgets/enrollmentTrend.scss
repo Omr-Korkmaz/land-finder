@@ -1,0 +1,24 @@
+.widget {
+    display: flex;
+    justify-content: space-between;
+  flex-direction: column;
+  width: 300px;
+  
+    padding: 20px;
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    border-radius: 10px;
+  
+    .widget__title{
+      font-size: 2rem;
+      align-self: center;
+      font-weight: bold;
+      font-size: 14px;
+      color: rgb(160, 160, 160);
+    }
+
+ 
+  
+  
+ 
+     
+  }
