@@ -1,19 +1,19 @@
 
 import "./home.scss";
+import Layout from "../../components/layout/Layout";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 
 const Home = () => {
   return (
-    <div className="home">
 
 
-    <Sidebar />
-    <div className="home-container">
+    <Layout>
 
-    <Navbar />
-    </div>
-    </div>
+  <div  >
+    deneme home lage
+  </div>
+    </Layout>
   );
 };
 

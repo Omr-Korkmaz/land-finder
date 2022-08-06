@@ -4,6 +4,7 @@ import StudentList from "./pages/studentList/StudentList";
 import StudentDetail from "./pages/studentDetail/StudentDetail";
 import CreateStudent from "./pages/createStudent/CreateStudent";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./components/layout/Layout";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
 
           <Route path="*" element={<> not found</>} />
         </Routes>
+        
       </BrowserRouter>
     </div>
   );
