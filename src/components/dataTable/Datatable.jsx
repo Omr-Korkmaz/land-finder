@@ -3,25 +3,12 @@ import { DataGrid } from "@mui/x-data-grid";
 import { userColumns, userRows } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import Notification from "../notification/Notification";
-
-
 
 const Datatable = () => {
   const [data, setData] = useState(userRows);
-  const [notify, setNotify] = useState({ isOpen: false, message: '', type: '' })
-
-  
 
   const handleDelete = (id) => {
-
-    alert("deneme");
     setData(data.filter((item) => item.id !== id));
-    setNotify({
-        isOpen: true,
-        message: 'Deleted Successfully',
-        type: 'error'
-    })
   };
 
   const actionColumn = [
@@ -32,7 +19,7 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
+            <Link to="/student/test(shoudbeID)" style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
             <div
@@ -52,7 +39,6 @@ const Datatable = () => {
         Student List
         <Link to="/users/new" className="link">
           Add New
-          
         </Link>
       </div>
       <DataGrid
@@ -63,11 +49,6 @@ const Datatable = () => {
         rowsPerPageOptions={[12]}
         checkboxSelection
       />
-
-<Notification
-                notify={notify}
-                setNotify={setNotify}
-            />
     </div>
   );
 };

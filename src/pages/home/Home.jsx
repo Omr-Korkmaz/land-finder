@@ -5,6 +5,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import EnrollmentWidget from "../../components/widgets/EnrollmentWidget";
 import EnrollmentTrend from "../../components/widgets/EnrollmentTrend";
+import Chart from '../../components/chart/Chart';
 
 const Home = () => {
   return (
@@ -21,8 +22,12 @@ const Home = () => {
 
           <EnrollmentWidget />
 
-      
+       
         </div>
+        <div>
+        <Chart />
+        </div>
+      
     </Layout>
   );
 };

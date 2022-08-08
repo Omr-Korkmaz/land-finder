@@ -1,0 +1,93 @@
+.detail-container {
+  margin-left: 300px;
+  margin-top: 50px;
+
+  &__top {
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+
+    &__left {
+      flex: 1;
+      box-shadow: 2px 4px 10px 1px rgba(33, 32, 32, 0.47);
+      padding: 20px;
+      position: relative;
+
+      .editButton {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 5px;
+        font-size: 12px;
+        color: #7451f8;
+        background-color: #7551f818;
+        cursor: pointer;
+        border-radius: 0px 0px 0px 5px;
+      }
+      .title {
+        align-content: center;
+        margin: 0px 20px 10px 150px;
+        text-decoration: underline;
+      }
+
+      .item {
+        display: flex;
+        gap: 20px;
+
+        .itemImg {
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        .details {
+          .itemTitle {
+            margin-bottom: 10px;
+            color: #555;
+          }
+
+          .detailItem {
+            margin-bottom: 10px;
+            font-size: 14px;
+
+            .itemKey {
+              font-weight: bold;
+              color: gray;
+              margin-right: 5px;
+            }
+
+            .itemValue {
+              font-weight: 300;
+            }
+          }
+        }
+      }
+    }
+
+    .right {
+      flex: 2;
+    }
+  }
+
+  .bottom {
+    margin: auto;
+    margin: 50px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__table {
+      width: 100%;
+      margin: 10px 30px;
+      .title {
+        margin-left: 130px;
+        text-decoration: underline;
+
+        font-size: 1.2rem;
+        color: rgb(43, 42, 42);
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
