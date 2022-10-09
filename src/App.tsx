@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { CountryTypes } from "./TypeCountries";
+import Country from "./components/country/Country";
 import {
 
   Button,
@@ -11,6 +12,8 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 const App = () => {
   const [countries, setCountries] = useState<CountryTypes[]>([]);
   const [inputSearch, setInputSearch] = useState<string>("");
+  const [category, setCategory] = useState<string>("");
+  const [errorStatus, setErrorStatus] = useState<boolean>(false);
 
 
   const getCountries = async () => {
@@ -27,7 +30,25 @@ const App = () => {
     }
   };
 
- 
+  const countriesMap = () => {
+    if (!errorStatus) {
+      return ( countries.map((country) => (
+        <div key={country.population} className="countryCardContainer">
+          <Country country={country} category={category} />
+        </div>
+      ))
+      )
+    }
+
+    return (
+      <div className="error-page">
+        <div className="error-message">
+          <h1> there is no RESULT </h1>
+          <p>--- please check if the spelling of information is correct---</p>
+        </div>
+      </div>
+    );
+  };
 
   const handleSubmit = (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
