@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { CountryTypes } from "./TypeCountries";
 import Country from "./components/country/Country";
+import Loading from "./components/loading/Loading";
+
 import {
 
   Button,
@@ -11,6 +13,8 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 const App = () => {
   const [countries, setCountries] = useState<CountryTypes[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
   const [inputSearch, setInputSearch] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [errorStatus, setErrorStatus] = useState<boolean>(false);
@@ -23,10 +27,16 @@ const App = () => {
       );
 
       setCountries(data);
+      setErrorStatus(false);
+      console.log(errorStatus);
 
     } catch {
-
+      setErrorStatus(true);
+      console.log("olmadi");
+      console.log(errorStatus);
     } finally {
+      setLoading(false);
+
     }
   };
 
@@ -80,8 +90,12 @@ const App = () => {
         Submit
       </Button>
     </form>
-  </div>
-       
+    </div>
+      <Loading loading={loading}>
+        <div>
+          <div className="country-container">{countriesMap()}</div>
+        </div>
+      </Loading>
     </div>
   );
 };
