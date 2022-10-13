@@ -1,24 +1,21 @@
-import { FunctionComponent } from "react";
+import React, { FunctionComponent } from "react";
 import "./loading.scss";
 
-
 interface ILoadingProps {
-  [x: string]: any;
-  loading: boolean;
+[x: string]: any;
+loading: boolean;
 }
 
-const Loading: FunctionComponent<ILoadingProps> = (props) => {
-  const { loading } = props;
+const Loading: FunctionComponent<ILoadingProps> = ({ loading, children }) => {
+if (loading) {
+return (
+<section className="loading">
+<h1 className="loading__text">Loading...</h1>
+</section>
+);
+}
 
-  if (loading) {
-    return (
-      <section className="loading">
-        <h1 className="loading__text">Loading...</h1>
-      </section>
-    );
-  }
-
-  return <>{props.children}</>;
+return <>{children}</>;
 };
 
 export default Loading;
