@@ -1,0 +1,27 @@
+.form {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-direction: column;
+    padding: 5px;
+  
+    &__category {
+      width: 100%;
+    }
+  
+    &__search {
+    }
+    &__button {
+      border-radius: 10px;
+      align-self: flex-end;
+  
+      color: white;
+      background-color: blue;
+  
+      &:hover {
+        background-color: darkblue;
+      }
+    }
+  }
