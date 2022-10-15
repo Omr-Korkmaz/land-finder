@@ -3,24 +3,31 @@ import axios from "axios";
 import { CountryTypes } from "./TypeCountries";
 import Country from "./components/country/Country";
 import Loading from "./components/loading/Loading";
-
 import {
-
+  Box,
+  TextField,
   Button,
-
+  Select,
+  FormControl,
+  MenuItem,
+  InputLabel,
 } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import "./App.scss";
 
 const App = () => {
   const [countries, setCountries] = useState<CountryTypes[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-
   const [inputSearch, setInputSearch] = useState<string>("");
   const [category, setCategory] = useState<string>("");
+  const [errInputMessage, setErrInputMessage] = useState<string>("");
+  const [errCategoryMessage, setErrCategoryMessage] = useState<string>("");
+  const [errValidSearch, setErrValidSearch] = useState<boolean>(false);
+  const [errValidCategory, setErrValidCategory] = useState<boolean>(false);
   const [errorStatus, setErrorStatus] = useState<boolean>(false);
 
-
   const getCountries = async () => {
+    setLoading(true);
     try {
       const { data } = await axios.get<CountryTypes[]>(
         `https://restcountries.com/v3.1/${category}/${inputSearch}`
@@ -34,10 +41,14 @@ const App = () => {
       setErrorStatus(true);
       console.log("olmadi");
       console.log(errorStatus);
+
     } finally {
       setLoading(false);
-
     }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputSearch(e.target.value);
   };
 
   const countriesMap = () => {
@@ -62,9 +73,21 @@ const App = () => {
 
   const handleSubmit = (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
+    setErrInputMessage("");
+    setErrCategoryMessage("");
 
+    setErrValidSearch(false);
+    setErrValidCategory(false);
 
-   
+    if (inputSearch === "") {
+      setErrInputMessage("this feild is required");
+      setErrValidSearch(true);
+    }
+
+    if (category === "") {
+      setErrCategoryMessage("selection category is required");
+      setErrValidCategory(true);
+    }
       getCountries();
     }
   
@@ -78,7 +101,43 @@ const App = () => {
       autoComplete="off"
       onSubmit={handleSubmit}
     >
-    
+      <Box sx={{ minWidth: 120 }} className="category">
+        <FormControl fullWidth error={errValidCategory}>
+          <InputLabel id="demo-simple-select-label">Category</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={category}
+            label="category"
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <MenuItem value="">
+              <em>select country</em>
+            </MenuItem>
+            <MenuItem value="name">name</MenuItem>
+            <MenuItem value="currency">currency</MenuItem>
+            <MenuItem value="lang">language</MenuItem>
+            <MenuItem value="capital">capital</MenuItem>
+
+            <MenuItem value="lang">language</MenuItem>
+
+            <MenuItem value="region">region</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+
+      <TextField
+        className="countryName"
+        onChange={handleChange}
+        placeholder="Search Country"
+        label="Name of country"
+        name="country"
+        variant="outlined"
+        fullWidth
+        required
+        error={errValidSearch}
+        helperText={errInputMessage}
+      />
 
       <Button
         className="button"
@@ -90,7 +149,7 @@ const App = () => {
         Submit
       </Button>
     </form>
-    </div>
+  </div>
       <Loading loading={loading}>
         <div>
           <div className="country-container">{countriesMap()}</div>
