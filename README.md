@@ -1,6 +1,5 @@
 
-# FindLand
-This project is created using React and TypeScript, allowing users to find countries based on multiple filter categories. The project includes a search feature that enables filtering by currency, language, region, and name.
+This project (LandFinder) is created using React and TypeScript, allowing users to find countries based on multiple filter categories. The project includes a search feature that enables filtering by currency, language, region, and name.
 
 API : `https://restcountries.com/v3.1/${category}/${inputSearch}`
 
